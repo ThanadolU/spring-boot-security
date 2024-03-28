@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
+
+import java.time.Instant;
 import java.util.UUID;
 
 @Data
@@ -18,6 +20,9 @@ public class Member {
     private String password;
     private String firstName;
     private String lastName;
+    private Instant createdAt;
+
+    private String email;
 
     public String getFirstName() {
         return firstName;
@@ -49,5 +54,21 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
