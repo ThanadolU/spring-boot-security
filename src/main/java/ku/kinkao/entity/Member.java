@@ -20,9 +20,10 @@ public class Member {
     private String password;
     private String firstName;
     private String lastName;
-    private Instant createdAt;
-
     private String email;
+    private String role;
+
+    private Instant createdAt;
 
     public String getFirstName() {
         return firstName;
@@ -70,5 +71,12 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setRole(String roleUser) {
+    }
+
+    public String getRole() {
+        return role;
     }
 }
