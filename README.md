@@ -6,3 +6,5 @@ Which contain the following contents below:
 * `Spring Security 3 -  Env Variables, UUID`
 * `Spring Security 4 - DTO, Input Validation, XSS`
 * `Spring Security 5 -  Authorization - Adding Roles to Web`
+* `Spring Security 6 - Database Encryption`
+* `Spring Security 7 - Custom Error Page, Logging`
