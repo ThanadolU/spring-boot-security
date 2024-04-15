@@ -24,11 +24,13 @@ public class Review {
     @ManyToOne
     private Restaurant restaurant;
 
-    public void setCreatedAt(Instant now) {
 
-    }
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public void setCreatedAt(Instant now) {
+        this.createdAt = now;
     }
 }

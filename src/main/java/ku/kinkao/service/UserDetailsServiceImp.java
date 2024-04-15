@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +33,13 @@ public class UserDetailsServiceImp implements UserDetailsService {
             throw new UsernameNotFoundException("Could not find user");
         }
 
+        System.out.println(member);
+
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(member.getRole()));
+
+//        logger.info(username + " has successfully logged in at "
+//                + Instant.now());
 
         return new org.springframework.security.core.userdetails.User(
                 member.getUsername(), member.getPassword(),

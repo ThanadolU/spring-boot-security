@@ -79,6 +79,7 @@ public class Member {
     }
 
     public void setRole(String roleUser) {
+        this.role = roleUser;
     }
 
     public String getRole() {

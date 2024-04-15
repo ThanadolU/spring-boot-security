@@ -27,18 +27,11 @@ public class SignupService {
     }
 
     public void createMember(SignupRequest dto) {
-//        Member newMember = new Member();
-//        newMember.setFirstName(member.getFirstName());
-//        newMember.setLastName(member.getLastName());
-//        newMember.setUsername(member.getUsername());
         Member dao = modelMapper.map(dto, Member.class);
         dao.setCreatedAt(Instant.now());
         dao.setRole("ROLE_USER");
-
         String hashedPassword = passwordEncoder.encode(dto.getPassword());
-
         dao.setPassword(hashedPassword);
-
         repository.save(dao);
     }
 

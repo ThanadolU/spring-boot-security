@@ -10,6 +10,8 @@ import org.springframework.security.authentication.event.AuthenticationSuccessEv
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import java.time.Instant;
+
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,10 +26,22 @@ public class AuthenticationEventListener {
     @EventListener
     public void authenticationSuccess(AuthenticationSuccessEvent event) {
         Authentication authentication = event.getAuthentication();
-        User user = (User) authentication.getPrincipal();
 
-        logger.info("{} has successfully logged in with roles {} at {}",
-                user.getUsername(), user.getAuthorities(), Instant.now());
+        if (authentication.getPrincipal() instanceof User) {
+            // Handle authentication with username/password
+            User user = (User) authentication.getPrincipal();
+            logger.info("{} has successfully logged in with roles {} at {}",
+                    user.getUsername(), user.getAuthorities(), Instant.now());
+        } else if (authentication.getPrincipal() instanceof DefaultOAuth2User) {
+            // Handle authentication with OAuth2 (e.g., GitHub)
+            DefaultOAuth2User oauth2User = (DefaultOAuth2User) authentication.getPrincipal();
+            String username = oauth2User.getAttribute("login"); // Assuming GitHub login is used as username
+            String roles = oauth2User.getAuthorities().toString();
+            logger.info("{} has successfully logged in with roles {} at {}",
+                    username, roles, Instant.now());
+        } else {
+            logger.warn("Unknown principal type: {}", authentication.getPrincipal().getClass().getName());
+        }
     }
 
     @EventListener

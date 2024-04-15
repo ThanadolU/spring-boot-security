@@ -24,6 +24,11 @@ public class Restaurant {
 
     private Instant createdAt;
 
-    public void setCreatedAt(Instant now) {
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 }
