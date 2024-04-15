@@ -2,6 +2,8 @@ package ku.kinkao.service;
 
 import ku.kinkao.entity.Member;
 import ku.kinkao.repository.MemberRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Service
 public class UserDetailsServiceImp implements UserDetailsService {
+
+    Logger logger = LoggerFactory.getLogger(UserDetailsServiceImp.class);
 
     @Autowired
     private MemberRepository memberRepository;
